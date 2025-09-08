@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Style - Trang chủ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="home-container">
+    <!-- Bên trái -->
+    <div class="text-section">
+      <h1 class="title">YOUR STYLE</h1>
+      <h3 class="subtitle">NỀN TẢNG CHO PHÉP MỌI NGƯỜI CÓ THỂ THỬ TRANG PHỤC THEO PHONG CÁCH CỦA BẠN</h3>
+      <p class="desc">
+        Chào mừng bạn đến với trải nghiệm thử trang phục ảo hiện đại! 
+        Chỉ với một vài thao tác đơn giản, bạn có thể thoải mái thay đổi phong cách, 
+        phối hợp trang phục và khám phá gu thời trang riêng của mình ngay trên màn hình. 
+        Công nghệ thử đồ trực tuyến mang đến cho bạn cảm giác như đang đứng trước gương, 
+        giúp bạn tự tin lựa chọn bộ outfit phù hợp nhất trước khi quyết định.
+      </p>
+      <button id="startBtn" class="btn-main">THỬ NGAY --></button>
+    </div>
+
+    <!-- Bên phải: chỗ để bạn cho hình -->
+    <div class="image-section">
+      <img src="anh/trangchu.png" alt="Mẫu thời trang" class="hero-image">
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("startBtn").addEventListener("click", () => {
+      window.location.href = "style.html";
+    });
+  </script>
+</body>
+</html>
