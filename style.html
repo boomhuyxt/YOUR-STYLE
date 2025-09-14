@@ -5,6 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Your Style - Trải nghiệm</title>
   <link rel="stylesheet" href="style.css">
+ 
+  <!-- TensorFlow.js -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-core"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-converter"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-webgl"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.10.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/pose-detection"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.10.0/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/pose-detection"></script>
+
 </head>
 <body>
   <h1 class="title">YOUR STYLE</h1>
@@ -14,23 +24,37 @@
     <div class="left-panel">
       <div class="phone-frame">
         <div class="phone-screen">
-          <video id="video" autoplay playsinline></video>
+          <div id="cameraContainer" style="position:relative;">
+            <video id="video" autoplay playsinline muted></video>
+            <canvas id="poseCanvas"></canvas>
+          </div>
         </div>
       </div>
       <button id="toggleCamera" class="btn-toggle">BẬT CAMERA</button>
     </div>
 
+        <div class="gender-box">
+  <h3>Chọn giới tính</h3>
+  <button id="btnMale">Nam</button>
+  <button id="btnFemale">Nữ</button>
+</div>
+
     <!-- Cột bên phải: các nút outfit -->
     <div class="right-panel">
       <div class="outfit-box">
         <h3>Chọn phong cách</h3>
-        <button class="outfit-btn">ĐI CHƠI</button>
-        <button class="outfit-btn">ĐI LÀM</button>
-        <button class="outfit-btn">HẸN HÒ</button>
+            <button class="outfit-btn" data-type="choi">ĐI CHƠI</button>
+            <button class="outfit-btn" data-type="lamviec">ĐI LÀM</button>
+            <button class="outfit-btn" data-type="henho">HẸN HÒ</button>
+
+
+        <!-- Khung hiển thị hình ảnh outfit -->
+        <div id="outfit-gallery" class="outfit-gallery"></div>
       </div>
     </div>
   </div>
 
+  <!-- Script chính -->
   <script src="script.js"></script>
 </body>
 </html>
