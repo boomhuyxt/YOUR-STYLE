@@ -1,10 +1,10 @@
 body {
   font-family: Arial, sans-serif;
   text-align: center;
-  background: #fff;
+  background: #fefefa;
   margin: 0;
   padding: 20px;
-  color: #333;
+  color: #3d0c02;
 }
 
 .container {
@@ -42,6 +42,18 @@ button:hover {
   background: #5a402f;
 }
 
+@font-face {
+  font-family: "Brittany";
+  src: url("font/iCielBrittanySignature-Regular.ttf") format(truetype);
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Montserra";
+  src: url(font/Montserrat-Black.ttf) format(truetype);
+  font-weight: normal;
+  font-style: normal;
+}
 /* ======= TRANG CHỦ ======= */
 .home-container {
   display: flex;
@@ -52,15 +64,50 @@ button:hover {
   padding: 20px;
 }
 
+.home-container::before {
+  bottom: -170px;
+  right: -100px;
+  width: 500px;
+  height: 500px;
+  border-radius: 60% 40% 50% 50% / 60% 60% 40% 40%;
+  transform: rotate(-10deg);
+  opacity: 0.5;
+}
+
+.home-container::after {
+  top: -50px;
+  left: -100px;
+  width: 300px;
+  height: 350px;
+  border-radius: 60% 40% 50% 50% / 60% 60% 40% 40%;
+  transform: rotate(15deg);
+  opacity: 0.6;
+}
+
+.home-container::after {
+  content: "";
+  position: absolute;
+  background-color: #a0785a;
+  z-index: 3;
+}
+
+.home-container::before {
+  content: "";
+  position: absolute;
+  background-color: #79443b;
+  z-index: 3;
+}
 .text-section {
   flex: 1;
   text-align: left;
   padding-right: 40px;
+  z-index: 10;
 }
 
 .image-section {
   flex: 1;
   text-align: center;
+  z-index: 10;
 }
 
 .hero-image {
@@ -69,20 +116,25 @@ button:hover {
 }
 
 .title {
-  font-size: 48px;
-  font-weight: bold;
+  font-size: 100px;
+  font-weight: normal;
   margin-bottom: 10px;
+  font-family: "Brittany", sans-serif;
 }
 
 .subtitle {
   font-size: 18px;
-  margin-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 50px;
+  font-family: "Montserra", sans-serif;
 }
 
 .desc {
   font-size: 16px;
   line-height: 1.6;
   margin-bottom: 30px;
+  text-align: justify;
 }
 
 .btn-main {
@@ -93,6 +145,7 @@ button:hover {
   font-size: 18px;
   cursor: pointer;
   border-radius: 8px;
+  margin-left: 100px;
 }
 
 .btn-main:hover {
@@ -131,4 +184,3 @@ button:hover {
 #video {
   transform: scaleX(-1); /* gương selfie */
 }
-
