@@ -175,27 +175,6 @@ if (nutChuyenCamera) {
   });
 }
 
-// ------------------- THU VIEN TRANG PHUC ------------------- //
-const danhSachTrangPhuc = {
-  nam: {
-    choi: [
-      "anh/đồ nam/áo/aonam (1).jpg",
-      "anh/đồ nam/áo/aonam (2).jpg",
-      "anh/đồ nam/áo/aonam (3).jpg",
-      "anh/đồ nam/quần/quannam(1).jpg",
-      "anh/đồ nam/quần/quannam(2).jpg",
-      "anh/đồ nam/quần/quannam(3).jpg"
-    ],
-    lamviec: ["anh/aodirtycoin-.png"],
-    henho: ["anh/aodirtycoin-.png"]
-  },
-  nu: {
-    choi: ["anh/đồ nữ/váy/dam.jpg"],
-    lamviec: ["anh/đồ nữ/quần/quannu (1).jpg"],
-    henho: ["anh/đồ nữ/váy/dam.jpg"]
-  }
-};
-
 // hien thi trang phuc theo loai va gioi tinh
 function hienThiTrangPhuc(loai) {
   const anhTrangPhuc = danhSachTrangPhuc[gioiTinhHienTai][loai] || [];
