@@ -90,10 +90,10 @@ async function phatHienTuThe() {
 
         // Ve nen + chu size
         ctx.fillStyle = "rgba(0,0,0,0.7)";
-        ctx.fillRect(15, 10, 95, 30);
+        ctx.fillRect(15, 10, 280, 80);
         ctx.fillStyle = "rgba(255, 0, 0, 1)";
-        ctx.font = "20px Arial";
-        ctx.fillText(`Size: ${size}`, 20, 32);
+        ctx.font = "62px Arial";
+        ctx.fillText(`Size: ${size}`, 20, 70);
 
         // --- TINH TI LE CO THE ---
         const rongVai = Math.hypot(
