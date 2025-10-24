@@ -280,3 +280,96 @@ button:hover {
   transform: translateY(-5px) scale(1.05);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
+/* ======================================= */
+/* ======= CSS CHO THIẾT BỊ DI ĐỘNG ======= */
+/* ======================================= */
+
+@media (max-width: 768px) {
+
+  /* --- Cài đặt chung --- */
+  body {
+    padding: 10px; /* Giảm padding trên body */
+  }
+
+  /* Ẩn các khối màu trang trí để gọn gàng hơn */
+  body::before,
+  body::after {
+    display: none;
+  }
+
+  /* --- Trang chủ (index.html) --- */
+  .home-container {
+    /* Chuyển sang bố cục cột, ảnh lên trên */
+    flex-direction: column-reverse; 
+    margin-top: 20px;
+    padding: 10px;
+  }
+
+  .text-section {
+    padding-right: 0; /* Xóa padding */
+    text-align: center; /* Căn giữa nội dung */
+  }
+
+  .title {
+    font-size: 64px; /* Giảm cỡ chữ tiêu đề */
+  }
+
+  .subtitle {
+    font-size: 16px;
+    margin-left: 0; /* Xóa margin */
+    margin-bottom: 20px;
+  }
+
+  .desc {
+    text-align: center; /* Căn giữa mô tả */
+  }
+
+  .hero-image {
+    max-width: 250px; /* Giảm kích thước ảnh */
+    margin-bottom: 20px;
+  }
+
+  /* --- Trang thử đồ (style.html) --- */
+  .main-container {
+    /* Chuyển sang bố cục cột (camera trên, điều khiển dưới) */
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  /* Panel camera bên trái */
+  .left-panel {
+    width: 100%; /* Chiếm toàn bộ chiều rộng */
+  }
+
+  .phone-frame {
+    width: 100%; /* Chiếm toàn bộ chiều rộng */
+    height: auto;  /* Chiều cao tự động */
+    aspect-ratio: 16 / 9; /* Giữ tỷ lệ khung hình 16:9 */
+    padding: 4px; /* Giảm padding khung */
+    border-width: 6px; /* Giảm viền khung */
+  }
+
+  /* Panel điều khiển bên phải */
+  .right-panel {
+    width: 100%; /* Chiếm toàn bộ chiều rộng */
+  }
+  
+  .gender-box, .outfit-box {
+    width: 100%; /* Chiếm toàn bộ chiều rộng */
+    padding: 15px; /* Giảm padding */
+  }
+
+  /* Nút trong các box */
+  .gender-box > button, .outfit-box > button {
+    padding: 10px 15px;
+    font-size: 16px;
+  }
+
+  /* Thư viện trang phục */
+  #outfit-gallery {
+     /* Hiển thị 4 cột ảnh để xem được nhiều hơn */
+     grid-template-columns: repeat(4, 1fr);
+     gap: 10px;
+     max-height: 280px; /* Tăng chiều cao tối đa một chút */
+  }
+}
