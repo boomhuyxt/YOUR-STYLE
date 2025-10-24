@@ -95,31 +95,50 @@ async function phatHienTuThe() {
         ctx.font = "62px Arial";
         ctx.fillText(`Size: ${size}`, 20, 70);
 
-        // --- TINH TI LE CO THE ---
-        const rongVai = Math.hypot(
-          vaiPhai.x - vaiTrai.x,
-          vaiPhai.y - vaiTrai.y
-        );
-        const rongHong = Math.hypot(
-          hongPhai.x - hongTrai.x,
-          hongPhai.y - hongTrai.y
-        );
-        const daiThan = ((hongTrai.y + hongPhai.y) / 2) - ((vaiTrai.y + vaiPhai.y) / 2);
+// --- TINH TI LE CO THE (LOGIC MOI: LOCK TI LE ANH, PHONG TO CHO VUA NGUOI) ---
 
-        const tiLeX = Math.max(rongVai, rongHong) / trangPhucDangChon.width;
-        const tiLeY = daiThan / trangPhucDangChon.height;
-        const tiLe = Math.min(tiLeX, tiLeY);
+        // 1. Tính toán kích thước mong muốn (khung thân người + padding)
+        const armpitY = (vaiTrai.y + vaiPhai.y) / 2;
+        const hipY = (hongTrai.y + hongPhai.y) / 2;
+        const torsoWidth = Math.hypot(vaiPhai.x - vaiTrai.x, vaiPhai.y - vaiTrai.y);
+        const torsoHeight = hipY - armpitY;
 
-        const tamX = (vaiTrai.x + vaiPhai.x) / 2;
-        const tamY = (vaiTrai.y + vaiPhai.y) / 2;
+        // Kích thước mong muốn = kích thước thân + 40% rộng và 20% cao (để to hơn)
+        // Bạn có thể chỉnh hệ số 1.4 và 1.2 nếu muốn áo to hơn hoặc nhỏ hơn
+        const desiredWidth = torsoWidth * 1.8; 
+        const desiredHeight = torsoHeight * 1.4;
 
-        const chieuRongMoi = trangPhucDangChon.width * tiLe;
-        const chieuCaoMoi = trangPhucDangChon.height * tiLe;
+        // 3. Lấy kích thước gốc của ảnh áo
+        const imageWidth = trangPhucDangChon.width;
+        const imageHeight = trangPhucDangChon.height;
 
+        // 4. Tính toán tỷ lệ co giãn cần thiết cho chiều rộng và chiều cao
+        const ratioWidth = desiredWidth / imageWidth;
+        const ratioHeight = desiredHeight / imageHeight;
+
+        // 5. Chọn tỷ lệ LỚN HƠN (Math.max)
+        // Điều này đảm bảo áo sẽ LUÔN PHỦ KÍN khung thân người
+        // Nó cũng giữ nguyên tỷ lệ gốc của ảnh áo, TRÁNH BỊ MÉO HÌNH
+        const tiLe = Math.max(ratioWidth, ratioHeight);
+
+        // 6. Tính kích thước mới dựa trên tỷ lệ đã chọn
+        const chieuRongMoi = imageWidth * tiLe;
+        const chieuCaoMoi = imageHeight * tiLe;
+
+        // 7. Xác định vị trí vẽ (căn giữa vào thân)
+        const armpitX_center = (vaiTrai.x + vaiPhai.x) / 2;
+        const drawX = armpitX_center - (chieuRongMoi / 2); // Căn giữa theo chiều ngang
+        
+        // Dịch áo lên trên để cổ áo vừa vặn hơn
+        // Thử dịch lên một khoảng bằng 15% chiều cao MỚI của áo
+        // Bạn có thể điều chỉnh hệ số 0.15 này (ví dụ 0.1, 0.2) để cổ áo vừa ý
+        const drawY = armpitY - (chieuCaoMoi * 0.27); 
+
+        // 8. Vẽ áo
         ctx.drawImage(
           trangPhucDangChon,
-          tamX - chieuRongMoi / 2,
-          tamY,
+          drawX,
+          drawY,
           chieuRongMoi,
           chieuCaoMoi
         );
